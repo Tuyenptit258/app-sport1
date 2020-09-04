@@ -1,6 +1,6 @@
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config()
-  }
+//if (process.env.NODE_ENV !== 'production') {
+   // require('dotenv').config()
+ // }
   
   const express = require('express')
   const app = express()
@@ -9,7 +9,7 @@ if (process.env.NODE_ENV !== 'production') {
   const flash = require('express-flash')
   const session = require('express-session')
   const methodOverride = require('method-override')
-  
+  /*
   const initializePassport = require('./passport-config')
   initializePassport(
     passport,
@@ -83,10 +83,13 @@ app.delete('/logout',(req,res)=>{
     }
     next()
 }*/
+const path = require('path')
+app.get('/', function(req,res){
+  var duongDanFile = path.join(__dirname,'home.html')
+  res.sendFile(duongDanFile)
+}) 
   
   
-  
-  
-  app.listen(3000,()=>{
+  app.listen(process.env.PORT,function(){
       console.log('Server start on')
   })
